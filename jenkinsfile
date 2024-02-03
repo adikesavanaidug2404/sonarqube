@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        SONARQUBE_HOME = tool 'SonarQube'
+        SONARQUBE_HOME = tool 'SonarQube'  //name which you given at tool config
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv('sonar') {
+                    withSonarQubeEnv('sonar') {   //inside bracket name which you given in config settings
                         sh "${SONARQUBE_HOME}/bin/sonar-scanner -Dsonar.projectKey=EKART -Dsonar.projectName=EKART -Dsonar.java.binaries=."
                     }
                 }
